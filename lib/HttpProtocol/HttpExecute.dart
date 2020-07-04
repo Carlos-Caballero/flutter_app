@@ -6,6 +6,24 @@ class HttpExecute {
   String endPointUrl;
   HttpExecute(this.endPointUrl);
 
+  get() async {
+    return await Validate.connectionError(method: loadGet);
+  }
+
+  post(Map parameters)async{
+    return await Validate.connectionError(methodParam: loadPost,parameters: parameters);
+
+  }
+
+  put(Map parameters)async{
+    return await Validate.connectionError(methodParam: loadPut,parameters: parameters);
+
+  }
+
+  delete()async{
+    return await Validate.connectionError(method: loadGet);
+  }
+
   loadGet() async {
     var response = await http.get(this.endPointUrl);
     validateResponse(response);
